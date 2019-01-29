@@ -5,7 +5,7 @@ from sys import platform
 HOST = "www.google.com"
 LOG = "log.txt"
 INTERVAL = 2; #seconds b/w pings
-COUNT = 2;    #num of packets to send
+COUNT = 1;    #num of packets to send
 
 if platform == 'darwin':
     def notify(m):
@@ -22,8 +22,8 @@ logFile.write("Internet Logger started at "
               + strftime( "%Y/%m/%d ---- %H:%M:%S") + '\n')
 wasUp = (os.system("ping -c " + str(COUNT) + ' ' + HOST +'&>/dev/null') == 0)
 if wasUp:
-    logFile.write("internet UP at startup \n");
     notify("Internet Up");
+    logFile.write("internet UP at startup \n");
 else:
     notify("Internet Down");
     logFile.write("internet DOWN at startup \n\n");
@@ -31,14 +31,14 @@ else:
 #continue checking
 while 1:
     sleep(INTERVAL);
-    response = os.system("ping -c " + str(COUNT) + ' ' + HOST+ '&>/dev/null')
-    if response == 0 and not wasUp:  #it's up :)
+    response = os.system("ping -t 2 -c " + str(COUNT) + ' ' + HOST+ '&>/dev/null')
+    if response == 0 and not wasUp: 
         wasUp = True
         now = strftime("%Y/%m/%d ---- %H:%M:%S")
         logFile.write("internet went UP at " + now + '\n\n');
-
+        notify("internet is now UP")
     elif response != 0 and wasUp:
-        wasUp = false
+        wasUp = False
         now = strftime("%Y/%m/%d ---- %H:%M:%S")
         logFile.write("internet went DOWN at " + now + '\n\n');
-        
+        notify("internet is now down")
