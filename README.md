@@ -1,5 +1,7 @@
+``` python3 main.py & ```
+
 # Internet-Logger
-A script for MacOS and Linux to monitor when your internet is up and when it is not.
+A Python3 script for MacOS and Linux to monitor when your internet is up and when it is not.
 
 Output is logged in `log.txt`. It keeps track of when connection is lost, and when it is restored.
 
