@@ -1,7 +1,3 @@
-``` 
-python3 main.py & 
-```
-
 # Internet-Logger
 A Python3 script for MacOS and Linux to monitor when your internet is up and when it is not.
 
