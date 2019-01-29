@@ -19,7 +19,7 @@ else:
 # startup routine
 logFile = open(LOG, 'a');
 logFile.write("Internet Logger started at "
-              + strftime( "%Y/%m/%d ---- %H:%M:%S") + '\n')
+              + strftime( "%Y/%m/%d ---- %H:%M:%S") + '\n\n')
 wasUp = (os.system("ping -c " + str(COUNT) + ' ' + HOST +'&>/dev/null') == 0)
 if wasUp:
     notify("Internet Up");
