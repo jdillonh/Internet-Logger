@@ -43,6 +43,8 @@ while 1:
     elif response != 0 and wasUp:
         wasUp = False
         now = strftime("%Y/%m/%d ---- %H:%M:%S")
+        logFile.close() 
+        logFile = open(LOG, 'a')
         logFile.write("internet went DOWN at " + now + '\n\n');
         notify("internet is now DOWN")
         
